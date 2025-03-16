@@ -1,8 +1,11 @@
 import React from 'react'
+import AddBook from './AddBook'
 
 const Dadhboard = () => {
   return (
-    <div>Dadhboard</div>
+    <>
+    <AddBook />
+    </>
   )
 }
 

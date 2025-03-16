@@ -17,29 +17,36 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
-      const response = await axios.post(`${BaseURL}/users/login`, formData);
-      
-      const { token, role } = response.data; 
-  
-      localStorage.setItem("token", token);
-      localStorage.setItem("userRole", role); 
-  
-      toast.success("Login successful!");
-  
-      setTimeout(() => {
-        if (role === "admin") {
-          navigate("/dashboard");
-        } else {
-          navigate("/");
+        const response = await axios.post(`${BaseURL}/users/login`, formData);
+
+        console.log(response.data); 
+
+        const { token, user } = response.data; 
+
+        if (!user || !token) {
+            throw new Error("Invalid response from server"); 
         }
-      }, 2000);
+
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user)); 
+        toast.success("Login successful!");
+
+        setTimeout(() => {
+            const storedUser = JSON.parse(localStorage.getItem("user") || "{}"); 
+            if (storedUser?.role === "admin") {
+                navigate("/dashboard");
+            } else {
+                navigate("/");
+            }
+        }, 2000);
     } catch (error) {
-      toast.error(error.response?.data?.message || "Login failed!");
+        console.error("Login Error:", error);
+        toast.error(error.response?.data?.message || "Login failed!");
     }
-  };
-  
+}
+
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-blue-50 to-indigo-100">
