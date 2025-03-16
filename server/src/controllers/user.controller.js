@@ -50,5 +50,32 @@ const login = async (req, res) => {
     }
 };
 
+const getUserDetails = async (req, res) => {
+    try {
+        const token = req.headers.authorization?.split(" ")[1]; 
+        if (!token) {
+            return res.status(401).json({ message: "No token provided" });
+        }
 
-module.exports = { signup, login };
+        const decoded = jwt.verify(token, process.env.JWT_SECRET); 
+        const user = await User.findById(decoded.id).select("-password"); 
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json(user);
+    } catch (err) {
+        console.error(err);
+        res.status(401).json({ message: "Invalid or expired token" });
+    }
+};
+
+const logout = async (req, res) => {
+    try {
+        res.status(200).json({ message: "Logout successful. Clear the token on client side." });
+    } catch (err) {
+        res.status(500).json({ message: "Server error", error: err.message });
+    }
+};
+
+module.exports = { signup, login, getUserDetails, logout};
