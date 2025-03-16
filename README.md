@@ -1,8 +1,24 @@
 # LMS
 
+### Tech Stack
+   - Backend 
+     - Node.js/Express.js
+   - Database
+     - Mongodb
+   - Frontend
+     - React.js
+     - tailwind.css
+
+### Deployment
+   - render.com (For srver)
+   - vercel (For client)
+   - mongodb atlas (For database)
+
 ### Deployed Link
    - server : https://lms-1-s084.onrender.com/
    - client : https://lms-eight-wine.vercel.app/
+
+### Folder Structure
 
 ### SS
  - Signup
