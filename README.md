@@ -6,7 +6,7 @@
 
 ### SS
  - Signup
- - ![screencapture-lms-eight-wine-vercel-app-signup-2025-03-16-19_23_20](https://github.com/user-attachments/assets/b545765c-6550-41d2-941e-1e505b724559
+ - ![screencapture-lms-eight-wine-vercel-app-signup-2025-03-16-19_23_20](https://github.com/user-attachments/assets/b545765c-6550-41d2-941e-1e505b724559)
    
  - Login
  - ![screencapture-lms-eight-wine-vercel-app-login-2025-03-16-19_24_01](https://github.com/user-attachments/assets/105a6c7c-94af-4537-aa88-27e00768f319)
