@@ -3,6 +3,7 @@ const connectDB = require("./src/configs/db");
 require("dotenv").config();
 const cors = require("cors");
 const userRoute = require("./src/routes/user.route");
+const bookRoute = require("./src/routes/book.route");
 
 const app = express();
 const PORT = process.env.PORT || 9080
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/users', userRoute);
+app.use('/api/books', bookRoute);
 
 app.listen(PORT, () => {
     connectDB(DB_URL);
