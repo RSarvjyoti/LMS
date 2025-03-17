@@ -13,6 +13,7 @@
    - render.com (For srver)
    - vercel (For client)
    - mongodb atlas (For database)
+   - cloudinary (For uploading book cover and user profile)
 
 ### Deployed Link
    - server : https://lms-1-s084.onrender.com/
