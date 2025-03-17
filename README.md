@@ -23,6 +23,9 @@
 ![Screenshot (1078)](https://github.com/user-attachments/assets/e1cf5478-4a36-4dd5-972a-b187ee9346ec)
 ![Screenshot (1079)](https://github.com/user-attachments/assets/6182b765-e367-4ff7-8b50-7596cfad8535)
 
+### For admin side you can use this
+ email : guddu@gmail.com
+ password : 123123
 
 ### SS
  - Signup
