@@ -29,6 +29,9 @@
    
  - For Admin
  - ![screencapture-lms-eight-wine-vercel-app-add-book-2025-03-16-19_25_10](https://github.com/user-attachments/assets/1d414928-6caa-4d29-bca3-849d7e9d8150)
+ - Dashboard
+ - ![screencapture-localhost-5173-dashboard-2025-03-17-11_29_27](https://github.com/user-attachments/assets/f340957a-768d-4676-a1c7-88d9cd47b516)
+
    
  - For All User
  - ![screencapture-lms-eight-wine-vercel-app-2025-03-16-19_24_56](https://github.com/user-attachments/assets/b1744af2-699b-45bc-a6d2-91491b3d0dca)
