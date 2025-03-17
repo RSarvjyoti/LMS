@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BaseURL } from "../api";
-import { FiLogOut, FiChevronDown, FiBook, FiPlus } from 'react-icons/fi';
+import { FiLogOut, FiChevronDown, FiBook, FiPlus } from "react-icons/fi";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
@@ -81,22 +81,25 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-8">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="flex items-center space-x-2 text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors"
             >
               <FiBook className="w-7 h-7" />
               <span>LMS</span>
             </Link>
 
-            {user && user.role === 'admin' && (
-              <Link 
-                to="/add-book" 
-                className="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full text-white font-medium transition-all transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg"
-              >
-                <FiPlus className="w-5 h-5" />
-                <span>Add Book</span>
-              </Link>
+            {user && user.role === "admin" && (
+              <>
+                <Link
+                  to="/add-book"
+                  className="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full text-white font-medium transition-all transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg"
+                >
+                  <FiPlus className="w-5 h-5" />
+                  <span>Add Book</span>
+                </Link>
+                <Link to="/dashboard">DashBoard</Link>
+              </>
             )}
           </div>
           <div className="flex items-center">
@@ -120,10 +123,10 @@ const Navbar = () => {
                   <span className="font-medium text-gray-700 group-hover:text-blue-600">
                     {user.username}
                   </span>
-                  <FiChevronDown 
+                  <FiChevronDown
                     className={`w-4 h-4 text-gray-500 transition-transform duration-300 ${
                       showProfileMenu ? "rotate-180" : ""
-                    }`} 
+                    }`}
                   />
                 </button>
 
@@ -141,14 +144,14 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="flex items-center space-x-3">
-                <Link 
-                  to="/login" 
+                <Link
+                  to="/login"
                   className="px-6 py-2 text-blue-600 font-medium hover:bg-blue-50 rounded-full transition-all"
                 >
                   Login
                 </Link>
-                <Link 
-                  to="/signup" 
+                <Link
+                  to="/signup"
                   className="px-6 py-2 bg-blue-600 text-white font-medium hover:bg-blue-700 rounded-full transition-all transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg"
                 >
                   Sign up

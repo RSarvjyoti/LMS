@@ -1,1 +1,1 @@
-export const BaseURL = "https://lms-1-s084.onrender.com/api"
+export const BaseURL =  "http://localhost:8080/api" // "https://lms-1-s084.onrender.com/api"

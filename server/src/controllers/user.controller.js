@@ -53,7 +53,6 @@ const login = async (req, res) => {
       { expiresIn: "1d" }
     );
 
-    // ✅ Send user object along with token
     res.json({
       message: "Login successful",
       token,
@@ -100,4 +99,18 @@ const logout = async (req, res) => {
   }
 };
 
-module.exports = { signup, login, getUserDetails, logout };
+const getAllUsers = async (req, res) => {
+  try {
+    
+    const users = await User.find(); 
+    if (!users) {
+      return res.status(404).json({ message: 'No users found' });
+    }
+    return res.status(200).json(users); 
+  } catch (err) {
+    console.error(err); 
+    return res.status(500).json({ message: 'Server error', error: err.message });
+  }
+}
+
+module.exports = { signup, login, getUserDetails, logout, getAllUsers };

@@ -19,6 +19,7 @@ function App() {
         <Route path="/add-book" element={<AddBook />} />
         <Route path="/book/:id" element={<BookDetails />} />
         <Route path="/dashboard" element={<Dadhboard />} />
+        <Route path="/add-book" element={<AddBook />} />
       </Routes>
       <Footer />
     </>
