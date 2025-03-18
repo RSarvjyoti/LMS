@@ -14,7 +14,6 @@ const Navbar = () => {
     const fetchUser = async () => {
       const token = localStorage.getItem("token");
       if (!token) {
-        setIsLoading(false);
         return;
       }
 
@@ -27,9 +26,7 @@ const Navbar = () => {
         console.error("Failed to fetch user:", error);
         localStorage.removeItem("token");
         setUser(null);
-      } finally {
-        setIsLoading(false);
-      }
+      } 
     };
     fetchUser();
   }, []);
