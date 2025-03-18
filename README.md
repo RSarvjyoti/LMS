@@ -36,13 +36,14 @@
  - ![screencapture-lms-eight-wine-vercel-app-login-2025-03-16-19_24_01](https://github.com/user-attachments/assets/105a6c7c-94af-4537-aa88-27e00768f319)
    
  - For Admin
- - ![screencapture-lms-eight-wine-vercel-app-add-book-2025-03-16-19_25_10](https://github.com/user-attachments/assets/1d414928-6caa-4d29-bca3-849d7e9d8150)
- - Dashboard
- - ![screencapture-localhost-5173-dashboard-2025-03-17-11_29_27](https://github.com/user-attachments/assets/f340957a-768d-4676-a1c7-88d9cd47b516)
+ - ![screencapture-lms-eight-wine-vercel-app-add-book-2025-03-18-23_26_50](https://github.com/user-attachments/assets/6e4acf31-eb33-49db-8c85-9844a2bfd1cd)
 
+ - Dashboard
+ - ![screencapture-lms-eight-wine-vercel-app-dashboard-2025-03-18-23_26_25](https://github.com/user-attachments/assets/e42c9338-818a-43e0-9b89-f5019eddf76b)
    
  - For All User
- - ![screencapture-lms-eight-wine-vercel-app-2025-03-16-19_24_56](https://github.com/user-attachments/assets/b1744af2-699b-45bc-a6d2-91491b3d0dca)
+ - ![screencapture-lms-eight-wine-vercel-app-2025-03-18-23_27_13](https://github.com/user-attachments/assets/fecb41b3-d336-4fdd-b3d0-2f73b811faca)
+
    
  - BookDetails
  - ![screencapture-lms-eight-wine-vercel-app-book-67d6ba86f230033423236893-2025-03-16-19_31_23 (1)](https://github.com/user-attachments/assets/a0be5e49-3e84-4ba2-ab3a-cea995423ee3)
