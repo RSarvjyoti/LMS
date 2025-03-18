@@ -11,6 +11,7 @@ const AddBook = () => {
     author: "",
     genre: "",
     year: "",
+    description: "",
     photo: null,
   });
 
@@ -20,7 +21,7 @@ const AddBook = () => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user || user.role !== "admin") {
-      navigate("/login"); 
+      navigate("/login");
     }
   }, [navigate]);
 
@@ -36,7 +37,13 @@ const AddBook = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!bookData.title || !bookData.author || !bookData.genre || !bookData.year) {
+    if (
+      !bookData.title ||
+      !bookData.author ||
+      !bookData.genre ||
+      !bookData.year ||
+      !bookData.description
+    ) {
       toast.error("All fields are required!");
       return;
     }
@@ -49,6 +56,7 @@ const AddBook = () => {
       formData.append("title", bookData.title);
       formData.append("author", bookData.author);
       formData.append("genre", bookData.genre);
+      formData.append("description", bookData.description);
       formData.append("year", bookData.year);
       if (bookData.photo) {
         formData.append("photo", bookData.photo);
@@ -66,8 +74,12 @@ const AddBook = () => {
       toast.success("Book Created Successfully!");
       navigate("/dashboard");
     } catch (err) {
-      toast.error(err.response?.data?.message || "Error creating book. Please try again.");
-      setError(err.response?.data?.message || "Error creating book. Please try again.");
+      toast.error(
+        err.response?.data?.message || "Error creating book. Please try again."
+      );
+      setError(
+        err.response?.data?.message || "Error creating book. Please try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -78,14 +90,21 @@ const AddBook = () => {
       <Toaster position="top-center" reverseOrder={false} />
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
         <div>
-          <h2 className="text-center text-3xl font-extrabold text-gray-900">Add New Book</h2>
-          {error && <p className="mt-2 text-center text-sm text-red-600">{error}</p>}
+          <h2 className="text-center text-3xl font-extrabold text-gray-900">
+            Add New Book
+          </h2>
+          {error && (
+            <p className="mt-2 text-center text-sm text-red-600">{error}</p>
+          )}
         </div>
 
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div className="rounded-md shadow-sm space-y-4">
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="title"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Title
               </label>
               <input
@@ -101,7 +120,10 @@ const AddBook = () => {
             </div>
 
             <div>
-              <label htmlFor="author" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="author"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Author
               </label>
               <input
@@ -117,7 +139,10 @@ const AddBook = () => {
             </div>
 
             <div>
-              <label htmlFor="genre" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="genre"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Genre
               </label>
               <select
@@ -134,7 +159,7 @@ const AddBook = () => {
                 <option value="Mystery">Mystery</option>
                 <option value="Science Fiction">Science Fiction</option>
                 <option value="Fantasy">Fantasy</option>
-                <option value="Romance">Romance</option>
+                <option value="Economics">Economics</option>
                 <option value="Thriller">Thriller</option>
                 <option value="Horror">Horror</option>
                 <option value="Biography">Biography</option>
@@ -143,7 +168,10 @@ const AddBook = () => {
             </div>
 
             <div>
-              <label htmlFor="year" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="year"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Publication Year
               </label>
               <input
@@ -161,7 +189,29 @@ const AddBook = () => {
             </div>
 
             <div>
-              <label htmlFor="photo" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="description"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Description
+              </label>
+              <textarea
+                id="description"
+                name="description"
+                required
+                value={bookData.description}
+                onChange={handleChange}
+                rows="4"
+                className="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Book Description"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="photo"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Book Cover
               </label>
               <input

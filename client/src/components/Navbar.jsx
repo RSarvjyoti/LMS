@@ -6,7 +6,6 @@ import { FiLogOut, FiChevronDown, FiBook, FiPlus } from "react-icons/fi";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const menuRef = useRef(null);
   const navigate = useNavigate();
@@ -65,16 +64,6 @@ const Navbar = () => {
       navigate("/login");
     }
   };
-
-  if (isLoading) {
-    return (
-      <nav className="sticky top-0 z-50 bg-white shadow-md">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-center">
-          <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-        </div>
-      </nav>
-    );
-  }
 
   return (
     <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md">

@@ -6,6 +6,7 @@ import { BaseURL } from "../api";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,36 +18,38 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     try {
-        const response = await axios.post(`${BaseURL}/users/login`, formData);
+      const response = await axios.post(`${BaseURL}/users/login`, formData);
 
-        console.log(response.data); 
+      console.log(response.data);
 
-        const { token, user } = response.data; 
+      const { token, user } = response.data;
 
-        if (!user || !token) {
-            throw new Error("Invalid response from server"); 
+      if (!user || !token) {
+        throw new Error("Invalid response from server");
+      }
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+      toast.success("Login successful!");
+
+      setTimeout(() => {
+        const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
+        if (storedUser?.role === "admin") {
+          navigate("/dashboard");
+        } else {
+          navigate("/");
         }
-
-        localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(user)); 
-        toast.success("Login successful!");
-
-        setTimeout(() => {
-            const storedUser = JSON.parse(localStorage.getItem("user") || "{}"); 
-            if (storedUser?.role === "admin") {
-                navigate("/dashboard");
-            } else {
-                navigate("/");
-            }
-        }, 2000);
+      }, 2000);
     } catch (error) {
-        console.error("Login Error:", error);
-        toast.error(error.response?.data?.message || "Login failed!");
+      console.error("Login Error:", error);
+      toast.error(error.response?.data?.message || "Login failed!");
+    } finally {
+      setIsSubmitting(false);
     }
-}
-
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -58,7 +61,7 @@ const Login = () => {
         <h2 className="text-center text-3xl font-bold text-gray-800 mb-8">
           Login
         </h2>
-  
+
         <div className="space-y-1">
           <label className="text-sm font-medium text-gray-700 block">
             Email
@@ -88,14 +91,19 @@ const Login = () => {
             className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-colors duration-200"
           />
         </div>
-  
+
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transform transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-md"
+          disabled={isSubmitting}
+          className={`w-full bg-blue-600 text-white py-3 px-4 rounded-lg text-lg font-semibold transform transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-md ${
+            isSubmitting
+              ? "opacity-70 cursor-not-allowed"
+              : "hover:bg-blue-700"
+          }`}
         >
-          Login
+          {isSubmitting ? "Logging in..." : "Login"}
         </button>
-  
+
         <p className="text-center text-gray-600">
           Don't have an account?{" "}
           <a

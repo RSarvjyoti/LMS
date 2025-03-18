@@ -86,6 +86,10 @@ const BookDetails = () => {
                 <span className="text-gray-600 font-medium">Published:</span>
                 <span className="text-gray-800">{data.year}</span>
               </div>
+              <div className="flex items-center space-x-4">
+                <span className="text-gray-600 font-medium">Description:</span>
+                <span className="text-gray-800">{data.description}</span>
+              </div>
 
               <div className="pt-6 border-t border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-700 mb-2">Additional Information</h3>
