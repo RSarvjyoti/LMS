@@ -46,4 +46,5 @@
 
    
  - BookDetails
- - ![screencapture-lms-eight-wine-vercel-app-book-67d6ba86f230033423236893-2025-03-16-19_31_23 (1)](https://github.com/user-attachments/assets/a0be5e49-3e84-4ba2-ab3a-cea995423ee3)
+ - ![screencapture-lms-eight-wine-vercel-app-book-67d9a2d6764b8dccd5421889-2025-03-18-23_35_07](https://github.com/user-attachments/assets/9f742e07-f58a-4b33-8a60-6a54e662fca5)
+
