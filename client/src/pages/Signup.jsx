@@ -13,9 +13,24 @@ const Signup = () => {
     password: "",
     photo: null,
   });
+  const [emailError, setEmailError] = useState("");
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    if (name === "email") {
+      validateEmail(value);
+    }
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Invalid email format");
+    } else {
+      setEmailError("");
+    }
   };
 
   const handlePhotoChange = (e) => {
@@ -28,6 +43,11 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (emailError) {
+      toast.error("Please enter a valid email.");
+      return;
+    }
 
     const formDataToSend = new FormData();
     formDataToSend.append("username", formData.username);
@@ -45,7 +65,6 @@ const Signup = () => {
       );
 
       toast.success(response.data.message);
-
       setTimeout(() => navigate("/login"), 2000);
     } catch (error) {
       toast.error(error.response?.data?.message || "Signup failed!");
@@ -142,6 +161,7 @@ const Signup = () => {
                 required
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-blue-500 transition-colors duration-200"
               />
+              {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
             </div>
   
             <div className="relative">
@@ -173,7 +193,6 @@ const Signup = () => {
       </p>
     </div>
   );
- 
 };
 
 export default Signup;
